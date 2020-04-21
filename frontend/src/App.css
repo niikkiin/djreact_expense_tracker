@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+/* reset */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+	font-size: 62.5%; /* equivalent to 16px, and I want my 1rem to be equal to 10px so 10/16px = 62.5% or 1rem */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+	box-sizing: border-box;
+	padding: 3rem;
+  background-color: #ecf1fa;
+  font-family: 'Muli', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* NOTE temporary, to be moved on its own component or page */
+/* main container layout */
+.container {
+  display: grid;
+
+  grid-template-areas: "sidebar main";
+
+  grid-template-columns: 27rem 1fr;
+  height: 92vh;
 }
 
-.App-link {
-  color: #61dafb;
+.main-container {
+  grid-area: main;
+  background-color: #F8F9FC;
+  padding: 4rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
