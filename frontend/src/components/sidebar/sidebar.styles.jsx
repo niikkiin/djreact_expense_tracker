@@ -1,5 +1,8 @@
 import styled, {css} from 'styled-components';
 
+// routing
+import { NavLink } from 'react-router-dom';
+
 const primaryGray = '#8F9297';
 const primaryTint = '#ECF0FA';
 const primaryColor = '#303778';
@@ -8,6 +11,7 @@ const linkStyles = css`
   color: ${primaryGray};
   font-size: 1.6rem;
   padding: 1rem 1rem;
+  text-decoration: none;
 
   display: flex;
   align-items: center;
@@ -57,34 +61,31 @@ export const SideNav = styled.ul`
 export const NavItem = styled.li`
   border-radius: 1rem;
   margin: 0 0 1rem 0;
+`;
 
-
+export const NavLinkContainer = styled(NavLink)`
+  ${linkStyles};
+  border-radius: 1rem;
+  
   &:hover {
     cursor: pointer;
     background-color: ${primaryTint};
     border-radius: 1rem;
-
-    .icon,
-    span {
-      background-color: ${primaryTint};
-      color: ${primaryColor};
+    color: ${primaryColor};
+    
+    .icon{
+      color: inherit;
     }
   }
-
-  &.active {
+    
+  &.is-active {
     background-color: ${primaryTint};
 
     .icon,
     span{
       color: ${primaryColor};
     }
-
   }
-`;
-
-//NOTE: href to be changed later
-export const NavLink = styled.div`
-  ${linkStyles};
 `;
 
 export const LowerContentContainer = styled.div`

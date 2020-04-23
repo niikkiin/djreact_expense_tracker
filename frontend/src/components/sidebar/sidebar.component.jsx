@@ -8,7 +8,7 @@ import {
   NavContainer,
   SideNav,
   NavItem,
-  NavLink,
+  NavLinkContainer,
   LowerContentContainer
 } from './sidebar.styles';
 
@@ -33,35 +33,35 @@ const Sidebar = () => (
 			</LogoContainer>
 			<NavContainer>
 				<SideNav>
-					<NavItem className='active'>
-            <NavLink>
+					<NavItem>
+            <NavLinkContainer exact to='/' activeClassName='is-active'>
               <InlineIcon className='icon' icon={homeIcon} />
               <span>Home</span>
-            </NavLink>
+            </NavLinkContainer>
 					</NavItem>
 					<NavItem>
-            <NavLink>
+            <NavLinkContainer exact to='/view-transaction' activeClassName='is-active'>
               <InlineIcon className='icon' icon={creditCard} />
               <span>Transactions</span>
-            </NavLink>
+            </NavLinkContainer>
 					</NavItem>
 					<NavItem>
-            <NavLink>
+            <NavLinkContainer exact to='/view-account' activeClassName='is-active'>
               <InlineIcon className='icon' icon={usersIcon} />
               <span>Accounts</span>
-            </NavLink>
+            </NavLinkContainer>
 					</NavItem>
 					<NavItem>
-            <NavLink>
+            <NavLinkContainer exact to='/view-goal' activeClassName='is-active'>
               <InlineIcon className='icon' icon={clipboardIcon} />
               <span>Goals</span>
-            </NavLink>
+            </NavLinkContainer>
 					</NavItem>
 					<NavItem>
-            <NavLink>
+            <NavLinkContainer exact to='/view-report' activeClassName='is-active'>
               <InlineIcon className='icon' icon={statsBars} />
               <span>Reports</span>
-            </NavLink>
+            </NavLinkContainer>
 					</NavItem>
 				</SideNav>
 			</NavContainer>
