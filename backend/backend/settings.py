@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -72,10 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
-
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
