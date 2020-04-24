@@ -87,10 +87,12 @@ class AddExpensesPage extends React.Component {
               label="Transation Name"
               required
             />
-            <DatePicker
-              selected={this.state.date}
-              onChange={this.dateChangedHandler}
-            />
+            <div className='datepicker'>
+              <DatePicker
+                onChange={this.dateChangedHandler}
+                placeholderText="Click to select a date"
+                />
+            </div>
             <FormInput
               name="account"
               type="text"
@@ -100,7 +102,7 @@ class AddExpensesPage extends React.Component {
               required
             />
             <FormInput
-              name="amount"
+              name="totalAmount"
               type="number"
               handleChange={this.handleChange}
               value={totalAmount}
