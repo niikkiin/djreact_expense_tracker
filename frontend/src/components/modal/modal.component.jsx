@@ -8,7 +8,7 @@ import { InlineIcon } from "@iconify/react";
 import bxX from '@iconify/icons-bx/bx-x';
 
 
-const Modal = ({ children, show, modalClosed }) => (
+const Modal = ({ children, show, modalClosed, header }) => (
   <div>
     <BackDrop show={show} backDropClicked={modalClosed} />
     <ModalContainer className={show ? 'showModal' : 'hideModal'}>
@@ -16,20 +16,11 @@ const Modal = ({ children, show, modalClosed }) => (
       
       <ModalHeader>
         <span>
-          Adding new item
+          {header}
         </span>
+        {/* TODO fix this close button soon */}
         <InlineIcon className='icon' icon={bxX} style={{color: '#000', fontSize: '24px'}} />
       </ModalHeader>
-      <InputContainer>
-        <ModalInput />
-      </InputContainer>
-      <InputContainer>
-        <ModalInput />
-      </InputContainer>
-      <InputContainer>
-        <ModalInput />
-      </InputContainer>
-        {/* NOTE if you decided to pass it using children use this */}
         {children}
 
     </ModalContainer>

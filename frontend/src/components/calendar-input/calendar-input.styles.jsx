@@ -1,5 +1,3 @@
-// TODO add 
-
 import styled, {css} from 'styled-components';
 
 const primaryGray = '#8F9297';
@@ -13,12 +11,13 @@ const shrinkLabelStyles = css`
   transform: translateY(-3rem);
 `;
 
-export const FormGroupContainer = styled.div`
-  position: relative;
-  margin: 3rem 0;
-`; 
+export const SpanContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 4rem;
+`;
 
-export const FormInputContainer = styled.input`
+export const CalendarInputContainer = styled.div`
   font-size: 1.6rem;
   color: ${primaryColor};
   font-weight: 400;
@@ -30,6 +29,14 @@ export const FormInputContainer = styled.input`
   padding: 0 0.5rem;
   display: block;
   transition: 300ms ease all;
+  cursor: pointer;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+  }
 
   &:focus {
     outline: none;
@@ -38,25 +45,5 @@ export const FormInputContainer = styled.input`
 
   &:focus ~ label {
     ${shrinkLabelStyles};
-  }
-
-`;
-
-export const FormInputLabel = styled.label`
-  font-size: 1.6rem;
-  color: ${primaryGray};
-  pointer-events: none;
-
-  position:absolute;
-  top: 1rem;
-  left: 0.5rem;
-  transition: 300ms ease all;
-
-  &.shrink {
-    ${shrinkLabelStyles};
-  }
-
-  span {
-    color: ${secondaryColor};
   }
 `;

@@ -31,24 +31,25 @@ class Table extends React.Component {
     })
   }
 
+  renderTableHeadings() {
+    return this.props.tableHeadings.map((tableHeading, idx) => {
+      const { id, name } = tableHeading;
+      return (
+      <th key={id}>{name}</th>
+      )
+    }
+    )
+  }
+
 	render() {
 		return (
 			<TableWrapper>
 				<TableContainer>
 					<TableHeadContainer>
-						<th>
-							Item Name<span>*</span>
-						</th>
-						<th>
-							Quantity<span>*</span>
-						</th>
-						<th>
-							Price<span>*</span>
-						</th>
-						<th>Description</th>
+						{this.renderTableHeadings()}
 					</TableHeadContainer>
 					<TableBodyContainer>
-						{this.renderTableData()}
+            
 					</TableBodyContainer>
 				</TableContainer>
 			</TableWrapper>

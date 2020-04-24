@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components';
 
 const primaryGray = '#8F9297';
-const primaryTint = '#ECF0FA';
 const primaryColor = '#303778';
+const primaryTint = '#ECF0FA';
 
 const buttonStyles = css`
   background-color: ${primaryColor};
@@ -12,8 +12,21 @@ const buttonStyles = css`
 const grayButtonStyles = css`
   background-color: ${primaryGray};
   color: #ffffff;
+  `;
+  
+const lightButtonStyles = css`
+  background-color: ${primaryTint};
+  color: ${primaryGray};
 `;
 
+
+const getButtonStyles = props => {
+  if (props.lightButton) {
+    return lightButtonStyles;
+  }
+
+  return buttonStyles;
+}
 
 export const CustomButtonContainer = styled.button`
   font-size: 1.6rem;
@@ -36,6 +49,5 @@ export const CustomButtonContainer = styled.button`
     transform: translateY(-0.3rem); 
   }
 
-  ${buttonStyles};
-  // props.inverted ? grayButtonStyles : buttonStyles;
+  ${getButtonStyles};
 `;

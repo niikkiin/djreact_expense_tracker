@@ -13,25 +13,15 @@ import ViewTransactionsPage from "./pages/view-transactions/view-transactions.co
 import ViewAccountsPage from "./pages/view-accounts/view-accounts.component";
 import ViewGoalsPage from "./pages/view-goals/view-goals.component";
 import ViewReportsPage from "./pages/view-reports/view-reports.component";
+import AddExpensesPage from './pages/add-expenses/add-expenses.component';
+import AddAccountsPage from './pages/add-account/add-account.component';
 
 // NOTE for demo only
-import Modal from "./components/modal/modal.component";
 
 class App extends React.Component {
-  state = {
-    modalToggle: true,
-  };
 
-  modalHandler = (e) => {
-    e.preventDefault();
-    this.setState({
-      // modalToggle: true
-      modalToggle: !this.state.modalToggle,
-    });
-  };
 
   render() {
-    const { modalToggle } = this.state;
     return (
       <div className="container">
         <Sidebar />
@@ -47,12 +37,13 @@ class App extends React.Component {
             <Route exact path="/view-account" component={ViewAccountsPage} />
             <Route exact path="/view-goal" component={ViewGoalsPage} />
             <Route exact path="/view-report" component={ViewReportsPage} />
+
+            {/* add forms */}
+            <Route exact path="/add-expense" component={AddExpensesPage} />
+            <Route exact path="/add-account" component={AddAccountsPage} />
           </Switch>
 
-          <Modal show={modalToggle} modalClosed={this.modalHandler}>
-            {/* TODO change to a component */}
-          </Modal>
-          <button onClick={this.modalHandler}>Show Modal</button>
+          
         </div>
       </div>
     );
