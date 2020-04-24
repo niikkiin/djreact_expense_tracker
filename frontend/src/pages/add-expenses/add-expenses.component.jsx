@@ -1,14 +1,14 @@
 import React from "react";
 
 // styled components
-import { AddExpenseContainer } from "./add-expenses.styles";
+import { AddExpenseContainer, SubmitButtonContainer } from "./add-expenses.styles";
 import DatePicker from "react-datepicker";
 
 // components
 import Forms from "../../components/forms/forms.component";
 import FormInput from "../../components/form-input/form-input.component";
-import CalendarInput from "../../components/calendar-input/calendar-input.component";
 import "react-datepicker/dist/react-datepicker.css";
+import "./datepicker.css";
 
 class AddExpensesPage extends React.Component {
   state = {
@@ -33,6 +33,13 @@ class AddExpensesPage extends React.Component {
     } = this.state;
 
     try {
+      console.log("name: ", transactionName);
+      console.log("date: ", date);
+      console.log("account: ", account);
+      console.log("total amount: ", totalAmount);
+      console.log("category: ", category);
+      console.log("note: ", note);
+
       this.setState({
         transactionName: "",
         date: "",
@@ -71,7 +78,6 @@ class AddExpensesPage extends React.Component {
     return (
       <AddExpenseContainer>
         <Forms title="Transactions" subheading="Adding new transaction">
-          <CalendarInput />
           <form onSubmit={this.handleSubmit}>
             <FormInput
               name="transactionName"
@@ -84,14 +90,6 @@ class AddExpensesPage extends React.Component {
             <DatePicker
               selected={this.state.date}
               onChange={this.dateChangedHandler}
-            />
-            <FormInput
-              name="date"
-              type="date"
-              handleChange={this.handleChange}
-              value={date}
-              label="Date"
-              required
             />
             <FormInput
               name="account"
@@ -124,6 +122,9 @@ class AddExpensesPage extends React.Component {
               value={note}
               label="Note"
             />
+            <SubmitButtonContainer addButton onClick={this.handleSubmit}>
+              Add
+            </SubmitButtonContainer>
           </form>
         </Forms>
       </AddExpenseContainer>

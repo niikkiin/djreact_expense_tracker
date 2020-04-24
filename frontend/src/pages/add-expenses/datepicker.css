@@ -1,0 +1,21 @@
+
+/* $primaryGray: #8F9297;
+$primaryTint: #ECF0FA;
+$primaryColor: #303778;
+$secondaryColor: #EE3F5F; */
+
+.react-datepicker__input-container input {
+  background-color: #ECF0FA;
+  font-size: 1.6rem;
+  font-weight: 400;
+  width: 104rem;
+  border: none;
+  height: 4rem;
+  border-radius:  1rem;
+  padding: 0 0.5rem;
+  color: #303778;
+}
+
+.react-datepicker__input-container input:focus {
+  outline: none;
+}
