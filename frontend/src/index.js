@@ -6,12 +6,15 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
+import transactionReducer from './store/reducers/transactions';
+
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 const rootReducer = combineReducers({
   // Reducers
+  transactions: transactionReducer,
 });
 
 // Place all middleware in this array
