@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@iconify/icons-ant-design": "^1.0.8",
     "@iconify/icons-bx": "^1.0.3",
