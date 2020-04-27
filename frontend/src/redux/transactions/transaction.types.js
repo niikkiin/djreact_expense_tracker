@@ -1,0 +1,4 @@
+export const TransactionActionTypes = {
+  GET_TRANSACTIONS: 'GET_TRANSACTIONS',
+  ADD_TRANSACTION: 'ADD_TRANSACTION', 
+};

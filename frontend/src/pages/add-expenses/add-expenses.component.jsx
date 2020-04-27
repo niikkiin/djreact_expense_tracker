@@ -1,137 +1,148 @@
-import React from "react";
+import React from 'react';
 
 // styled components
-import { AddExpenseContainer, SubmitButtonContainer } from "./add-expenses.styles";
-import DatePicker from "react-datepicker";
+import { AddExpenseContainer, SubmitButtonContainer } from './add-expenses.styles';
+import DatePicker from 'react-datepicker';
 
 // components
-import Forms from "../../components/forms/forms.component";
-import FormInput from "../../components/form-input/form-input.component";
-import "react-datepicker/dist/react-datepicker.css";
-import "./datepicker.css";
+import Forms from '../../components/forms/forms.component';
+import FormInput from '../../components/form-input/form-input.component';
+import 'react-datepicker/dist/react-datepicker.css';
+
+import { connect } from 'react-redux';
+import { addTransaction } from '../../redux/transactions/transaction.actions';
 
 class AddExpensesPage extends React.Component {
-  state = {
-    transactionName: "",
-    date: new Date(),
-    account: "",
-    totalAmount: "",
-    category: "",
-    note: "",
-  };
+	state = {
+		name: '',
+		date: new Date(),
+		account: '',
+		totalAmount: '',
+		category: '',
+		note: '',
+	};
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+	handleSubmit = (event) => {
+		event.preventDefault();
 
-    const {
-      transactionName,
-      date,
-      account,
-      totalAmount,
-      category,
-      note,
-    } = this.state;
+		const { name, date, account, totalAmount, category, note } = this.state;
 
-    try {
-      console.log("name: ", transactionName);
-      console.log("date: ", date);
-      console.log("account: ", account);
-      console.log("total amount: ", totalAmount);
-      console.log("category: ", category);
-      console.log("note: ", note);
+		const transactions = { name, date, account, totalAmount, category, note };
 
-      this.setState({
-        transactionName: "",
-        date: "",
-        account: "",
-        totalAmount: "",
-        category: "",
-        note: "",
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+		this.props.addTransaction(transactions);
 
-  handleChange = (event) => {
-    const { value, name } = event.target;
+		try {
+			console.log('name: ', name);
+			console.log('date: ', date);
+			console.log('account: ', account);
+			console.log('total amount: ', totalAmount);
+			console.log('category: ', category);
+			console.log('note: ', note);
 
-    this.setState({ [name]: value });
-  };
+			this.setState({
+				name: '',
+				date: new Date(),
+				account: '',
+				totalAmount: '',
+				category: '',
+				note: '',
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  dateChangedHandler = (date) => {
-    this.setState({
-      date: date,
-    });
-  };
+	handleChange = (event) => {
+		const { value, name } = event.target;
 
-  render() {
-    const {
-      transactionName,
-      date,
-      account,
-      totalAmount,
-      category,
-      note,
-    } = this.state;
+		this.setState({ [name]: value });
+	};
 
-    return (
-      <AddExpenseContainer>
-        <Forms title="Transactions" subheading="Adding new transaction">
-          <form onSubmit={this.handleSubmit}>
-            <FormInput
-              name="transactionName"
-              type="text"
-              handleChange={this.handleChange}
-              value={transactionName}
-              label="Transation Name"
-              required
-            />
-            <div className='datepicker'>
-              <DatePicker
-                onChange={this.dateChangedHandler}
-                placeholderText="Click to select a date"
-                />
-            </div>
-            <FormInput
-              name="account"
-              type="text"
-              handleChange={this.handleChange}
-              value={account}
-              label="Account"
-              required
-            />
-            <FormInput
-              name="totalAmount"
-              type="number"
-              handleChange={this.handleChange}
-              value={totalAmount}
-              label="Total Amount"
-              required
-            />
-            <FormInput
-              name="category"
-              type="text"
-              handleChange={this.handleChange}
-              value={category}
-              label="Category"
-              required
-            />
-            <FormInput
-              name="note"
-              type="textarea"
-              handleChange={this.handleChange}
-              value={note}
-              label="Note"
-            />
-            <SubmitButtonContainer addButton onClick={this.handleSubmit}>
-              Add
-            </SubmitButtonContainer>
-          </form>
-        </Forms>
-      </AddExpenseContainer>
-    );
-  }
+	dateChangedHandler = (date) => {
+		this.setState({
+			date: date,
+		});
+	};
+
+	render() {
+		const { name, date, account, totalAmount, category, note } = this.state;
+
+		return (
+			<AddExpenseContainer>
+				<Forms title='Transactions' subheading='Adding new transaction'>
+					<form onSubmit={this.handleSubmit}>
+						<FormInput
+							name='name'
+							type='text'
+							handleChange={this.handleChange}
+							value={name}
+							label='Transation Name'
+							required
+						/>
+						<DatePicker
+							onChange={this.dateChangedHandler}
+							selected={date}
+							dateFormat='yyyy-MM-dd'
+							className='datepicker'
+							isClearable
+							placeholderText='Click to select a date'
+							popperModifiers={{
+								offset: {
+									enabled: true,
+									offset: '5px, 10px',
+								},
+								preventOverflow: {
+									enabled: true,
+									escapeWithReference: false,
+									boundariesElement: 'viewport',
+								},
+							}}
+						/>
+						<FormInput
+							name='account'
+							type='text'
+							handleChange={this.handleChange}
+							value={account}
+							label='Account'
+							required
+						/>
+						<FormInput
+							name='totalAmount'
+							type='number'
+							handleChange={this.handleChange}
+							value={totalAmount}
+							label='Total Amount'
+							required
+						/>
+						<FormInput
+							name='category'
+							type='text'
+							handleChange={this.handleChange}
+							value={category}
+							label='Category'
+							required
+						/>
+						<FormInput
+							name='note'
+							type='textarea'
+							handleChange={this.handleChange}
+							value={note}
+							label='Note'
+						/>
+						<SubmitButtonContainer addButton onClick={this.handleSubmit}>
+							Add
+						</SubmitButtonContainer>
+					</form>
+				</Forms>
+			</AddExpenseContainer>
+		);
+	}
 }
 
-export default AddExpensesPage;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addTransaction: (transactions) => dispatch(addTransaction(transactions)),
+	}
+};
+
+export default connect(null, mapDispatchToProps)(AddExpensesPage);
